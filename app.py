@@ -12,3 +12,5 @@ def index():
 def greeter():
 	flash("Hi " + str(request.form['name_input']) + ", great to see you!")
 	return render_template("index.html")
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=8000)

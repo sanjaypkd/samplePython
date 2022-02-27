@@ -20,10 +20,10 @@ env:
   IBM_CLOUD_REGION: us-south
   ICR_NAMESPACE: ${{ secrets.ICR_NAMESPACE }}
   REGISTRY_HOSTNAME: us.icr.io
-  IMAGE_NAME: iks-test
+  IMAGE_NAME: webapp
   IKS_CLUSTER: c8ct39nf08oghneuavsg
-  DEPLOYMENT_NAME: iks-test
-  PORT: 5001
+  DEPLOYMENT_NAME: webapp
+  PORT: 8000
 
 jobs:
   setup-build-publish-deploy:
@@ -48,6 +48,7 @@ jobs:
     - name: Authenticate with IBM Cloud CLI
       run: |
         ibmcloud login --apikey "${IBM_CLOUD_API_KEY}" -r "${IBM_CLOUD_REGION}" -g default
+        ibmcloud target -g b537cf7d138947ec9f60d7d14d1bf49d
         ibmcloud cr region-set "${IBM_CLOUD_REGION}"
         ibmcloud cr login
 
